@@ -56,13 +56,12 @@ pacman -S --noconfirm virtualbox-guest-modules-arch virtualbox-guest-utils
 echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 
 # install dev envt.
+# This is the main section to change what packages we get
 echo 'Installing dev environment'
-pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux i3 dmenu
+pacman -S --noconfirm git zsh neovim wget make gcc grep tmux i3 dmenu
 pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher
 pacman -S --noconfirm ttf-hack lxterminal nitrogen ntp dhclient keychain
-pacman -S --noconfirm python-pip go go-tools pkg-config
-npm install -g jscs jshint bower grunt
-pip install pipenv bpython ipython
+pacman -S --noconfirm pkg-config
 
 # install req for pacaur & cower
 echo 'Installing dependencies'
@@ -86,7 +85,7 @@ echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 systemctl enable ntpdate.service
 
 # preparing post install
-wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/post-install.sh -O /home/$user/post-install.sh
+wget https://raw.githubusercontent.com/lrssnn/spartan-arch/master/post-install.sh -O /home/$user/post-install.sh
 chown $user:$user /home/$user/post-install.sh
 
 echo 'Done'

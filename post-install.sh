@@ -17,10 +17,7 @@ echo 'exec i3 &' >> ~/.xinitrc
 echo 'exec nitrogen --restore &' >> ~/.xinitrc
 echo 'exec emacs' >> ~/.xinitrc
 
-# emacs config
-git clone https://github.com/abrochard/emacs-config.git
-echo '(load-file "~/emacs-config/bootstrap.el")' > ~/.emacs
-echo '(server-start)' >> ~/.emacs
+# Put vim config here when you have one
 
 # cower & pacaur
 mkdir Downloads
@@ -47,12 +44,13 @@ echo 'UXTerm*background:black' >> ~/.Xdefaults
 echo 'UXTerm*foreground:white' >> ~/.Xdefaults
 
 # tmux setup like emacs
-cd
-echo 'unbind C-b' > ~/.tmux.conf
-echo 'set -g prefix C-x' >> ~/.tmux.conf
-echo 'bind C-x send-prefix' >> ~/.tmux.conf
-echo 'bind 2 split-window' >> ~/.tmux.conf
-echo 'bind 3 split-window -h' >> ~/.tmux.conf
+# Sticking with defaults for now
+# cd
+# echo 'unbind C-b' > ~/.tmux.conf
+# echo 'set -g prefix C-x' >> ~/.tmux.conf
+# echo 'bind C-x send-prefix' >> ~/.tmux.conf
+# echo 'bind 2 split-window' >> ~/.tmux.conf
+# echo 'bind 3 split-window -h' >> ~/.tmux.conf
 
 # oh-my-zsh
 cd
@@ -60,10 +58,10 @@ rm ~/.zshrc -f
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="bira"/' ~/.zshrc
-sed -i 's/plugins=(git)/plugins=(git compleat sudo archlinux emacs autojump common-aliases)/' ~/.zshrc
+sed -i 's/plugins=(git)/plugins=(git compleat sudo archlinux autojump common-aliases)/' ~/.zshrc
 
 # environment variable
-echo 'export EDITOR=emacsclient' >> ~/.zshrc
+echo 'export EDITOR=nvim' >> ~/.zshrc
 echo 'export TERMINAL=lxterminal' >> ~/.zshrc
 
 # i3status
@@ -80,7 +78,7 @@ sed -i 's/^order += "battery 0"/#order += "battery 0"/' ~/.config/i3status/confi
 # git first time setup
 git config --global user.name $(whoami)
 git config --global user.email $(whoami)@$(hostname)
-git config --global code.editor emacsclient
+git config --global code.editor nvim
 echo '    AddKeysToAgent yes' >> ~/.ssh/config
 
 # if there are ssh key
@@ -95,7 +93,7 @@ fi
 cd
 mkdir Pictures
 cd Pictures
-wget https://github.com/abrochard/spartan-arch/blob/master/wallpaper.jpg?raw=true -O wallpaper.jpg
+wget https://github.com/lrssnn/spartan-arch/blob/master/wallpaper.jpg?raw=true -O wallpaper.jpg
 cd ~/.config/
 mkdir nitrogen
 cd nitrogen
@@ -104,20 +102,13 @@ echo "file=/home/$(whoami)/Pictures/wallpaper.jpg" >> bg-saved.cfg
 echo 'mode=0' >> bg-saved.cfg
 echo 'bgcolor=#000000' >> bg-saved.cfg
 
-# golang setup
-mkdir ~/go
-GOPATH=$HOME/go
-echo 'export GOPATH=$GOPATH' >> ~/.zshrc
-echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.zshrc
-go get -u github.com/nsf/gocode
-go get -u github.com/rogpeppe/godef
-go get -u golang.org/x/tools/cmd/goimports
-go get -u github.com/jstemmer/gotags
+# rust setup
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s --default-toolchain nightly
 
 
 # temporary workaround
 cd
-wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/startx.sh -O startx.sh
+wget https://raw.githubusercontent.com/lrssnn/spartan-arch/master/startx.sh -O startx.sh
 chmod +x startx.sh
 echo 'alias startx=~/startx.sh' >> ~/.zshrc
 
