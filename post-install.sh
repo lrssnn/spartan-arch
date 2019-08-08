@@ -15,7 +15,6 @@ echo 'exec VBoxClient --clipboard -d &' >> ~/.xinitrc
 echo 'exec VBoxClient --display -d &' >> ~/.xinitrc
 echo 'exec i3 &' >> ~/.xinitrc
 echo 'exec nitrogen --restore &' >> ~/.xinitrc
-echo 'exec emacs' >> ~/.xinitrc
 
 # Put vim config here when you have one
 

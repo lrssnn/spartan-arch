@@ -1,6 +1,8 @@
 # spartan-arch
 
-This is a set of scripts designed to automate the creation of a minimal VM running Arch Linux and i3/Emacs as a Windows manager. This VM can be used as a file editor for the  host via folder sharing and as a development environment. Currently, the VM costs about 90MB of RAM to run.
+Edited slightly to remove some stuff that I don't care about, get rust etc.
+
+This is a set of scripts designed to automate the creation of a minimal VM running Arch Linux and i3/nvim as a Windows manager. This VM can be used as a file editor for the  host via folder sharing and as a development environment. Currently, the VM costs about 90MB of RAM to run.
 
 ## Requirements for Virtual Box VM
 - 8GB of space on disk
@@ -11,7 +13,7 @@ This is a set of scripts designed to automate the creation of a minimal VM runni
 ## Installation
 Boot the VM on archlinux iso and then run the command
 ```shell
-wget https://goo.gl/ZPAMtT -O install.sh
+wget *install.sh* -O install.sh
 bash install.sh [user] [password] [fast]
 ```
 All arguments are optional and will be prompted for if not passed on invocation:
